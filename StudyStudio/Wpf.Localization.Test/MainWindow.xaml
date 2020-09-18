@@ -1,0 +1,21 @@
+﻿<Window x:Class="Wpf.Localization.Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf.Localization.Test"
+        xmlns:prop="clr-namespace:Wpf.Localization.Test.Properties"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Text="{x:Static prop:Resources.HelloWorld}" Margin="0 20 0 50"/>
+            
+            <TextBlock x:Name="HelloWorldTextBlock" Text="Click the button below" Margin="5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button Click="CultureInfoSwitchButton_Click" HorizontalContentAlignment="Stretch" Margin="0 0 5 0">Default</Button>
+                <Button Tag="en-US" Click="CultureInfoSwitchButton_Click" HorizontalContentAlignment="Stretch">English (US)</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
