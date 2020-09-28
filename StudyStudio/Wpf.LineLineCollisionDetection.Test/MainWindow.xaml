@@ -1,0 +1,81 @@
+﻿<Window
+    x:Class="Wpf.LineLineCollisionDetection.Test.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Wpf.LineLineCollisionDetection.Test"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <DataTemplate x:Key="CanvasDataTemplate">
+            <Border
+                Margin="3"
+                BorderBrush="Black"
+                BorderThickness="1">
+                <Canvas MouseMove="Canvas_MouseMove" Background="White">
+                    <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}, Path=Tag}" />
+                </Canvas>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="0.3*" />
+            <ColumnDefinition Width="0.3*" />
+        </Grid.ColumnDefinitions>
+        <ContentControl
+            Grid.Row="0"
+            Grid.Column="0"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.LeftTop}" />
+        <ContentControl
+            Grid.Row="0"
+            Grid.Column="1"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.CenterTop}" />
+        <ContentControl
+            Grid.Row="0"
+            Grid.Column="2"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.RightTop}" />
+        <ContentControl
+            Grid.Row="1"
+            Grid.Column="0"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.LeftCenter}" />
+        <ContentControl
+            Grid.Row="1"
+            Grid.Column="1"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.CenterCenter}" />
+        <ContentControl
+            Grid.Row="1"
+            Grid.Column="2"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.RightCenter}" />
+        <ContentControl
+            Grid.Row="2"
+            Grid.Column="0"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.LeftBottom}" />
+        <ContentControl
+            Grid.Row="2"
+            Grid.Column="1"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.CenterBottom}" />
+        <ContentControl
+            Grid.Row="2"
+            Grid.Column="2"
+            ContentTemplate="{StaticResource CanvasDataTemplate}"
+            Tag="{x:Static local:StartPosition.RightBottom}" />
+    </Grid>
+</Window>
