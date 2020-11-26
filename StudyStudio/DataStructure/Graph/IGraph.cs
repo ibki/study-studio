@@ -11,6 +11,8 @@ namespace DataStructure.Graph
 
         bool IsWeighted { get; }
 
+        int VerticesCount { get; }
+
         IEnumerable<TVertex> Vertices { get; }
         IEnumerable<IEdge<TVertex>> Edges { get; }
 

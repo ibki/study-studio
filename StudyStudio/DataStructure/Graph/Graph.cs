@@ -14,6 +14,8 @@ namespace DataStructure.Graph
 
         #region Vertext
 
+        public int VerticesCount => adjacencyList.Count;
+
         protected virtual Dictionary<TVertex, List<IEdge<TVertex>>> adjacencyList { get; set; }
             = new Dictionary<TVertex, List<IEdge<TVertex>>>();
 

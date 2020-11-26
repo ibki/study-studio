@@ -1,6 +1,7 @@
 ﻿using DataStructure.Graph;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Algorithm.Graph
@@ -18,7 +19,7 @@ namespace Algorithm.Graph
         private Dictionary<TVertex, int> nodesToIndices;
         private Dictionary<int, TVertex> indicesToNodes;
 
-        private  MinPriorityQueue<TVertex, long> _minPriorityQueue;
+        private  Queue<(TVertex, double)> _priorityQueue;
 
         private readonly TGraph _graph;
         private readonly TVertex _source;
@@ -29,15 +30,45 @@ namespace Algorithm.Graph
             _source = source;
 
             Initialize();
+            DijkstraAlgorithm();
         }
 
         private void Initialize()
         {
+            int verticesCount = _graph.VerticesCount;
 
+            _distances = new double[verticesCount];
+            _predecessors = new int[verticesCount];
 
-            foreach (var i in _graph.Vertices)
+            int i = 0;
+            foreach (var vertex in _graph.Vertices)
             {
+                // Set distance to infinity value for all nodes except start node
+                if (_source.Equals(vertex))
+                {
+                    _distances[i] = 0;
+                    _predecessors[i] = 0;
+                }
+                else
+                {
+                    _distances[i] = Infinity;
+                    _predecessors[i] = NilPredecessor;
+                }
 
+                _priorityQueue.Enqueue((vertex, _distances[i]));
+
+                nodesToIndices.Add(vertex, i);
+                indicesToNodes.Add(i, vertex);
+                i++;
+            }
+        }
+
+        private void DijkstraAlgorithm()
+        {
+            while (_priorityQueue.Count != 0)
+            {
+                var a = _priorityQueue.Min(m => m.Item2);
+                _priorityQueue.Dequeue();
             }
         }
     }
