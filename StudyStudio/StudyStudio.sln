@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf.Localization.Test", "Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf.LineLineCollisionDetection.Test", "Wpf.LineLineCollisionDetection.Test\Wpf.LineLineCollisionDetection.Test.csproj", "{62CD09BB-DE79-4E2F-AAA7-D618D5F29ABA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console.StackExchange.Redis.Test", "Console.StackExchange.Redis.Test\Console.StackExchange.Redis.Test.csproj", "{BBE5194D-A48B-4065-AFFE-314ED527F16C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure", "DataStructure\DataStructure.csproj", "{5B08024C-68A7-4B07-919F-E265C9F5C96C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm", "Algorithm\Algorithm.csproj", "{197E5AB2-2DF2-440B-82A5-98341551553A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm.Test", "Algorithm.Test\Algorithm.Test.csproj", "{E2949297-0826-4E8C-B98F-7F47ED8492D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf.Viewbox.Test", "Wpf.Viewbox.Test\Wpf.Viewbox.Test.csproj", "{824CD108-7728-410A-9D2F-1BCB4D75FF4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +31,26 @@ Global
 		{62CD09BB-DE79-4E2F-AAA7-D618D5F29ABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62CD09BB-DE79-4E2F-AAA7-D618D5F29ABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62CD09BB-DE79-4E2F-AAA7-D618D5F29ABA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE5194D-A48B-4065-AFFE-314ED527F16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE5194D-A48B-4065-AFFE-314ED527F16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE5194D-A48B-4065-AFFE-314ED527F16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE5194D-A48B-4065-AFFE-314ED527F16C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B08024C-68A7-4B07-919F-E265C9F5C96C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B08024C-68A7-4B07-919F-E265C9F5C96C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B08024C-68A7-4B07-919F-E265C9F5C96C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B08024C-68A7-4B07-919F-E265C9F5C96C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{197E5AB2-2DF2-440B-82A5-98341551553A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197E5AB2-2DF2-440B-82A5-98341551553A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197E5AB2-2DF2-440B-82A5-98341551553A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197E5AB2-2DF2-440B-82A5-98341551553A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2949297-0826-4E8C-B98F-7F47ED8492D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2949297-0826-4E8C-B98F-7F47ED8492D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2949297-0826-4E8C-B98F-7F47ED8492D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2949297-0826-4E8C-B98F-7F47ED8492D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{824CD108-7728-410A-9D2F-1BCB4D75FF4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{824CD108-7728-410A-9D2F-1BCB4D75FF4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{824CD108-7728-410A-9D2F-1BCB4D75FF4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{824CD108-7728-410A-9D2F-1BCB4D75FF4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

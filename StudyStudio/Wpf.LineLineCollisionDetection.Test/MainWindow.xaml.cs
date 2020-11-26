@@ -98,9 +98,9 @@ namespace Wpf.LineLineCollisionDetection.Test
 
             if (isCollision)
             {
-                var ellipse = new Ellipse { Width = 5, Height = 5, Stroke = Brushes.Red, StrokeThickness = 10 };
-                ellipse.SetValue(Canvas.LeftProperty, intersectionX);
-                ellipse.SetValue(Canvas.TopProperty, intersectionY);
+                var ellipse = new Ellipse { Width = 10, Height = 10, Stroke = Brushes.Red, StrokeThickness = 10 };
+                ellipse.SetValue(Canvas.LeftProperty, intersectionX - 5);
+                ellipse.SetValue(Canvas.TopProperty, intersectionY - 5);
                 canvas.Children.Add(ellipse);
             }
         }
