@@ -8,7 +8,7 @@ namespace DataStructure.List
 {
     public static class ListExtensions
     {
-        public static bool TryFindFirst<T>(this List<T> list, Predicate<T> match, out T found)
+        public static bool TryFindFirst<T>(this IList<T> list, Predicate<T> match, out T found)
         {
             found = default(T);
 
@@ -25,6 +25,16 @@ namespace DataStructure.List
             }
 
             return false;
+        }
+
+        public static void Swap<T>(this IList<T> list, int firstIndex, int secondIndex)
+        {
+            if (list.Count < 2 || firstIndex == secondIndex)
+                return;
+
+            var temp = list[firstIndex];
+            list[firstIndex] = list[secondIndex];
+            list[secondIndex] = temp;
         }
     }
 }
