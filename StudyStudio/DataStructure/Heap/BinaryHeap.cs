@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DataStructure.List;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DataStructure.Heap
 {
@@ -19,12 +19,12 @@ namespace DataStructure.Heap
         private void ShiftUp(int index)
         {
             int parent = index / 2;
-            if (SortOrder == SortOrder.Ascending)
-            while (items[parent].CompareTo(items[index]) < 0)
-            else
-            while (items[parent].CompareTo(items[index]) < 0)
+            while (CompareWhenShiftUp(parent, index))
             {
+                items.Swap(parent, index);
 
+                index = parent;
+                parent = index / 2;
             }
         }
 
@@ -46,5 +46,12 @@ namespace DataStructure.Heap
 
             return true;
         }
+
+        public void Clear()
+        {
+            items.Clear();
+        }
+
+        public T[] ToArray() => items.ToArray();
     }
 }

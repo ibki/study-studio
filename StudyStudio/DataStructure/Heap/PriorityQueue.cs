@@ -4,7 +4,15 @@ using System.Text;
 
 namespace DataStructure.Heap
 {
-    class PriorityQueue
+    public class PriorityQueue<TKey, TPriority>
+        where TKey : IComparable<TKey>
+        where TPriority : IComparable<TPriority>
     {
+        private 
+
+        public bool Enqueue(TKey key, TPriority priority)
+        {
+
+        }
     }
 }

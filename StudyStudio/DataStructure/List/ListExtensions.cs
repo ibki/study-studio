@@ -8,6 +8,8 @@ namespace DataStructure.List
 {
     public static class ListExtensions
     {
+        public static bool IsEmpty<T>(this IList<T> list) => !list.Any();
+
         public static bool TryFindFirst<T>(this IList<T> list, Predicate<T> match, out T found)
         {
             found = default(T);

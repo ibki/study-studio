@@ -19,7 +19,7 @@ namespace Algorithm.Graph
         private Dictionary<TVertex, int> nodesToIndices;
         private Dictionary<int, TVertex> indicesToNodes;
 
-        private  Queue<(TVertex, double)> _priorityQueue;
+        private Queue<(TVertex, double)> _priorityQueue;
 
         private readonly TGraph _graph;
         private readonly TVertex _source;
@@ -69,6 +69,8 @@ namespace Algorithm.Graph
             {
                 var a = _priorityQueue.Min(m => m.Item2);
                 _priorityQueue.Dequeue();
+
+                //_graph.OutgoingEdges()
             }
         }
     }

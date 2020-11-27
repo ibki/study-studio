@@ -18,8 +18,18 @@ namespace DataStructure.Graph
 
         IEnumerable<TVertex> Neighbours(TVertex vertex);
 
+        /// <summary>
+        /// 해당 버텍스가 Destination인 엣지를 가져온다.
+        /// </summary>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
         IEnumerable<IEdge<TVertex>> IncomingEdges(TVertex vertex);
 
+        /// <summary>
+        /// 해당 버텍스가 Source인 엣지를 가져온다.
+        /// </summary>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
         IEnumerable<IEdge<TVertex>> OutgoingEdges(TVertex vertex);
 
         bool AddEdge(TVertex source, TVertex destination, double weight);

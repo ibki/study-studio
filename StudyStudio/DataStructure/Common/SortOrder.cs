@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataStructure.Common
+﻿public enum SortOrder
 {
-    class SortOrder
-    {
-    }
+    Ascending = 0,
+    Descending = 1
 }
