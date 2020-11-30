@@ -8,6 +8,8 @@ namespace DataStructure.Test.Heap
     public class BinaryHeapTests
     {
         private readonly BinaryHeap<int> binaryIntMinHeap = new BinaryHeap<int>(SortOrder.Ascending);
+        private readonly BinaryHeap<int> binaryIntMaxHeap = new BinaryHeap<int>(SortOrder.Descending);
+
 
         public BinaryHeapTests()
         {
@@ -15,21 +17,28 @@ namespace DataStructure.Test.Heap
         }
 
         [TestMethod]
-        [DataRow(5, 4, 3, 2, 1)]
-        [DataRow(1, 10, 2, 20, 3)]
+        [DataRow(5, 4, 3, 2, 1, 0)]
+        [DataRow(1, 10, 2, 20, 3, 30)]
+        [DataRow(1, 2, 3, 4, 5, 6)]
+        [DataRow(50, 10, 5, 30, 40, 3)]
+        [DataRow(30, 20, 1, 3, 60, 2)]
+        [DataRow(23, 42, 4, 16, 8, 1, 3, 100, 5, 7)]
         public void Add_RandomValues_ReturnsSortOfNumbers(params int[] values)
         {
             // Arrange
             binaryIntMinHeap.Clear();
+            binaryIntMaxHeap.Clear();
 
             // Act
             foreach (var i in values)
             {
                 binaryIntMinHeap.Add(i);
+                binaryIntMaxHeap.Add(i);
             }
 
             // Assert
-
+            Assert.IsTrue(IsRightOrder(binaryIntMinHeap));
+            Assert.IsTrue(IsRightOrder(binaryIntMaxHeap));
         }
 
         public bool IsRightOrder<T>(BinaryHeap<T> binaryHeap)
@@ -42,11 +51,14 @@ namespace DataStructure.Test.Heap
                 int leftChildIndex = i * 2 + 1;
                 int rightChildIndex = leftChildIndex + 1;
 
+                if (!IsCompare(array[i], array[leftChildIndex], binaryHeap.SortOrder))
+                    return false;
 
-                if (array[i].CompareTo(array[leftChildIndex]) >= 0)
+                if (rightChildIndex < array.Length)
                 {
-
-                }
+                    if (!IsCompare(array[i], array[rightChildIndex], binaryHeap.SortOrder))
+                        return false;
+                }    
             }
 
             return true;

@@ -8,11 +8,10 @@ namespace DataStructure.Heap
         where TKey : IComparable<TKey>
         where TPriority : IComparable<TPriority>
     {
-        private 
 
-        public bool Enqueue(TKey key, TPriority priority)
-        {
+        //public bool Enqueue(TKey key, TPriority priority)
+        //{
 
-        }
+        //}
     }
 }

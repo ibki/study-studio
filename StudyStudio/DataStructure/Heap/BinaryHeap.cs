@@ -18,20 +18,21 @@ namespace DataStructure.Heap
 
         private void ShiftUp(int index)
         {
-            int parent = index / 2;
+            int parent = (index - 1) / 2;
             while (CompareWhenShiftUp(parent, index))
             {
                 items.Swap(parent, index);
 
                 index = parent;
-                parent = index / 2;
+                parent = (index - 1) / 2;
             }
         }
 
+        // TODO: Method name is not clear
         private bool CompareWhenShiftUp(int parent, int index)
             => SortOrder == SortOrder.Ascending ?
-               items[parent].CompareTo(items[index]) < 0 :
-               items[parent].CompareTo(items[index]) > 0;
+               items[parent].CompareTo(items[index]) > 0 :
+               items[parent].CompareTo(items[index]) < 0;
 
         /// <summary>
         /// Adding a new item to the heap.
