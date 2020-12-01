@@ -16,15 +16,19 @@ namespace DataStructure.Heap
             SortOrder = sortOrder;
         }
 
+        private int Parent(int index) => (index - 1) / 2;
+        private int Left(int index) => (index * 2) + 1;
+        private int Right(int index) => Left(index) + 1;
+
         private void ShiftUp(int index)
         {
-            int parent = (index - 1) / 2;
+            int parent = Parent(index);
             while (CompareWhenShiftUp(parent, index))
             {
                 items.Swap(parent, index);
 
                 index = parent;
-                parent = (index - 1) / 2;
+                parent = Parent(index);
             }
         }
 
