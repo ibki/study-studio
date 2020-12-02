@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace DataStructure.Heap
 {
-
     public class BinaryHeap<T>
         where T : IComparable<T>
     {
@@ -20,10 +19,12 @@ namespace DataStructure.Heap
         private int Left(int index) => (index * 2) + 1;
         private int Right(int index) => Left(index) + 1;
 
+        public int Count => items.Count;
+
         private void ShiftUp(int index)
         {
             int parent = Parent(index);
-            while (CompareWhenShiftUp(parent, index))
+            while (IsSwap(parent, index))
             {
                 items.Swap(parent, index);
 
@@ -32,8 +33,7 @@ namespace DataStructure.Heap
             }
         }
 
-        // TODO: Method name is not clear
-        private bool CompareWhenShiftUp(int parent, int index)
+        private bool IsSwap(int parent, int index)
             => SortOrder == SortOrder.Ascending ?
                items[parent].CompareTo(items[index]) > 0 :
                items[parent].CompareTo(items[index]) < 0;
@@ -50,6 +50,47 @@ namespace DataStructure.Heap
             ShiftUp(items.Count - 1);
 
             return true;
+        }
+
+        public bool Remove(int index)
+        {
+            int last = items.Count - 1;
+
+            if (0 > index && last < index)
+                return false;
+
+            if (last == index)
+                items.RemoveAt(index);
+            else
+            {
+                items.Swap(index, last);
+                items.RemoveAt(last);
+
+                Heapify(index);
+            }
+
+            return true;
+        }
+
+        public void Heapify(int index)
+        {
+            int left = Left(index);
+            int right = Right(index);
+            int parent = index;
+
+            if (left < Count && IsSwap(parent, left))
+                parent = left;
+
+            if (right < Count && IsSwap(parent, right))
+                parent = right;
+
+            if (parent != index)
+            {
+                items.Swap(index, parent);
+
+                // Not parent index
+                Heapify(parent);
+            }
         }
 
         public void Clear()

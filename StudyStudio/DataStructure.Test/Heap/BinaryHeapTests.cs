@@ -1,6 +1,7 @@
 using DataStructure.Heap;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace DataStructure.Test.Heap
 {
@@ -9,7 +10,6 @@ namespace DataStructure.Test.Heap
     {
         private readonly BinaryHeap<int> binaryIntMinHeap = new BinaryHeap<int>(SortOrder.Ascending);
         private readonly BinaryHeap<int> binaryIntMaxHeap = new BinaryHeap<int>(SortOrder.Descending);
-
 
         public BinaryHeapTests()
         {
@@ -37,6 +37,36 @@ namespace DataStructure.Test.Heap
             }
 
             // Assert
+            Assert.IsTrue(IsRightOrder(binaryIntMinHeap));
+            Assert.IsTrue(IsRightOrder(binaryIntMaxHeap));
+        }
+
+        [TestMethod]
+        [DataRow(5, 4, 3, 2, 1, 0)]
+        [DataRow(1, 10, 2, 20, 3, 30)]
+        [DataRow(1, 2, 3, 4, 5, 6)]
+        [DataRow(50, 10, 5, 30, 40, 3)]
+        [DataRow(30, 20, 1, 3, 60, 2)]
+        [DataRow(23, 42, 4, 16, 8, 1, 3, 100, 5, 7)]
+        public void Remove_RandomValues_ReturnsSortOfNumbers(params int[] values)
+        {
+            // Arrange
+            binaryIntMinHeap.Clear();
+            binaryIntMaxHeap.Clear();
+            foreach (var i in values)
+            {
+                binaryIntMinHeap.Add(i);
+                binaryIntMaxHeap.Add(i);
+            }
+
+            // Act & Assert
+            binaryIntMinHeap.Remove(1);
+            binaryIntMaxHeap.Remove(1);
+            Assert.IsTrue(IsRightOrder(binaryIntMinHeap));
+            Assert.IsTrue(IsRightOrder(binaryIntMaxHeap));
+
+            binaryIntMinHeap.Remove(2);
+            binaryIntMaxHeap.Remove(2);
             Assert.IsTrue(IsRightOrder(binaryIntMinHeap));
             Assert.IsTrue(IsRightOrder(binaryIntMaxHeap));
         }
