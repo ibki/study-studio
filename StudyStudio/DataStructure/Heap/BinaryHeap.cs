@@ -1,6 +1,7 @@
 ﻿using DataStructure.List;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DataStructure.Heap
 {
@@ -20,6 +21,8 @@ namespace DataStructure.Heap
         private int Right(int index) => Left(index) + 1;
 
         public int Count => items.Count;
+
+        public bool IsEmpty => items.Count == 0;
 
         private void ShiftUp(int index)
         {
@@ -52,6 +55,11 @@ namespace DataStructure.Heap
             return true;
         }
 
+        /// <summary>
+        /// Removing a item of index to the heap.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool Remove(int index)
         {
             int last = items.Count - 1;
@@ -91,6 +99,17 @@ namespace DataStructure.Heap
                 // Not parent index
                 Heapify(parent);
             }
+        }
+
+        public T Peek() => IsEmpty ? throw new Exception("Heap is empty.") : items.First();
+
+        public T ExtractFirst()
+        {
+            var first = Peek();
+
+            Remove(0);
+
+            return first;
         }
 
         public void Clear()
