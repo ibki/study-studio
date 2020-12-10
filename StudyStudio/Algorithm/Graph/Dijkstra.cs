@@ -1,4 +1,5 @@
 ﻿using DataStructure.Graph;
+using DataStructure.Heap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,21 @@ namespace Algorithm.Graph
         private const double Infinity = double.MaxValue;
         private const int NilPredecessor = -1;
 
-        private double[] _distances;
-        private int[] _predecessors;
+        private double[] distances;
+        private int[] predecessors;
 
         private Dictionary<TVertex, int> nodesToIndices;
         private Dictionary<int, TVertex> indicesToNodes;
 
-        private Queue<(TVertex, double)> _priorityQueue;
+        private PriorityQueue<TVertex, double> priorityQueue;
 
-        private readonly TGraph _graph;
-        private readonly TVertex _source;
+        private readonly TGraph graph;
+        private readonly TVertex source;
 
         public Dijkstra(TGraph graph, TVertex source)
         {
-            _graph = graph;
-            _source = source;
+            this.graph = graph;
+            this.source = source;
 
             Initialize();
             DijkstraAlgorithm();
@@ -35,27 +36,27 @@ namespace Algorithm.Graph
 
         private void Initialize()
         {
-            int verticesCount = _graph.VerticesCount;
+            int verticesCount = graph.VerticesCount;
 
-            _distances = new double[verticesCount];
-            _predecessors = new int[verticesCount];
+            distances = new double[verticesCount];
+            predecessors = new int[verticesCount];
 
             int i = 0;
-            foreach (var vertex in _graph.Vertices)
+            foreach (var vertex in graph.Vertices)
             {
                 // Set distance to infinity value for all nodes except start node
-                if (_source.Equals(vertex))
+                if (source.Equals(vertex))
                 {
-                    _distances[i] = 0;
-                    _predecessors[i] = 0;
+                    distances[i] = 0;
+                    predecessors[i] = 0;
                 }
                 else
                 {
-                    _distances[i] = Infinity;
-                    _predecessors[i] = NilPredecessor;
+                    distances[i] = Infinity;
+                    predecessors[i] = NilPredecessor;
                 }
 
-                _priorityQueue.Enqueue((vertex, _distances[i]));
+                priorityQueue.Enqueue(vertex, distances[i]);
 
                 nodesToIndices.Add(vertex, i);
                 indicesToNodes.Add(i, vertex);
@@ -65,13 +66,58 @@ namespace Algorithm.Graph
 
         private void DijkstraAlgorithm()
         {
-            while (_priorityQueue.Count != 0)
+            while (!priorityQueue.IsEmpty)
             {
-                var a = _priorityQueue.Min(m => m.Item2);
-                _priorityQueue.Dequeue();
+                var currentVertex = priorityQueue.Dequeue();
+                var currentVertexIndex = nodesToIndices[currentVertex];
 
-                //_graph.OutgoingEdges()
+                var outgoingEdges = graph.OutgoingEdges(currentVertex);
+                foreach (var outgoingEdge in outgoingEdges)
+                {
+                    var adjacentIndex = nodesToIndices[outgoingEdge.Destination];
+                    var delta = distances[currentVertexIndex] != Infinity ?
+                        distances[currentVertexIndex] + outgoingEdge.Weight :
+                        Infinity;
+
+                    if (delta < distances[adjacentIndex])
+                    {
+                        distances[adjacentIndex] = delta;
+                        predecessors[adjacentIndex] = currentVertexIndex;
+
+                        priorityQueue.UpdatePriority(outgoingEdge.Destination, delta);
+                    }
+                }
             }
+        }
+
+        public bool HasPathTo(TVertex destination)
+        {
+            if (!nodesToIndices.ContainsKey(destination))
+                throw new ArgumentException("Graph doesn't have the specified vertex.");
+
+            var index = nodesToIndices[destination];
+            return distances[index] != Infinity;
+        }
+
+        public IEnumerable<TVertex> ShortestPathTo(TVertex destination)
+        {
+            if (!nodesToIndices.ContainsKey(destination))
+                throw new ArgumentException("Graph doesn't have the specified vertex.");
+
+            if (!HasPathTo(destination))
+                return null;
+
+            var dstIndex = nodesToIndices[destination];
+            var stack = new Stack<TVertex>();
+
+            int index;
+            for (index = dstIndex; distances[index] != 0; index = predecessors[index])
+            {
+                stack.Push(indicesToNodes[index]);
+            }
+            stack.Push(indicesToNodes[index]);
+
+            return stack;
         }
     }
 }

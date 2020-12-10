@@ -31,6 +31,23 @@ namespace DataStructure.Heap
             return binaryHeap.ExtractFirst().Key;
         }
 
+        public bool UpdatePriority(TKey key, TPriority newPriority)
+        {
+            var isUpdate = false;
+
+            for (int i = 0; i < binaryHeap.Count; i++)
+            {
+                if (binaryHeap[i].Key.Equals(key))
+                {
+                    binaryHeap[i].Priority = newPriority;
+                    isUpdate = true;
+                    break;
+                }
+            }
+
+            return isUpdate;
+        }
+
         public void Clear()
         {
             binaryHeap.Clear();

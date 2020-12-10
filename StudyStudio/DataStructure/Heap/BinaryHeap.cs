@@ -11,6 +11,34 @@ namespace DataStructure.Heap
         public SortOrder SortOrder { get; private set; }
         private readonly List<T> items = new List<T>();
 
+        public int Count => items.Count;
+
+        public bool IsEmpty => items.Count == 0;
+
+        public T this[int index]
+        {
+            get
+            {
+                if (Count == 0 || index < 0 || Count < index)
+                    throw new IndexOutOfRangeException();
+
+                return items[index];
+            }
+            set
+            {
+                if (Count == 0 || index < 0 || Count < index)
+                    throw new IndexOutOfRangeException();
+
+                items[index] = value;
+
+                if (index != 0 && IsSwap(Parent(index), index))
+                    ShiftUp(index);
+                else
+                    Heapify(index);
+            }
+        }
+
+
         public BinaryHeap(SortOrder sortOrder)
         {
             SortOrder = sortOrder;
@@ -19,10 +47,6 @@ namespace DataStructure.Heap
         private int Parent(int index) => (index - 1) / 2;
         private int Left(int index) => (index * 2) + 1;
         private int Right(int index) => Left(index) + 1;
-
-        public int Count => items.Count;
-
-        public bool IsEmpty => items.Count == 0;
 
         private void ShiftUp(int index)
         {
