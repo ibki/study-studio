@@ -41,6 +41,11 @@ namespace Algorithm.Graph
             distances = new double[verticesCount];
             predecessors = new int[verticesCount];
 
+            nodesToIndices = new Dictionary<TVertex, int>();
+            indicesToNodes = new Dictionary<int, TVertex>();
+
+            priorityQueue = new PriorityQueue<TVertex, double>();
+
             int i = 0;
             foreach (var vertex in graph.Vertices)
             {
