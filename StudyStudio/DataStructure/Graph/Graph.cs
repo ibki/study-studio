@@ -93,7 +93,7 @@ namespace DataStructure.Graph
         {
             if (!HasVertex(source) || !HasVertex(destination))
                 return false;
-            if (!HasEdge(source, destination))
+            if (HasEdge(source, destination))
                 return false;
 
             var edge = new WeightedEdge<TVertex>(source, destination, weight);
