@@ -53,6 +53,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LongestSubstringWithoutRepeatingCharactersTests.cs" />
     <Compile Include="MedianOfTwoSortedArraysTests.cs" />
+    <Compile Include="LongestPalindromicSubstringTests.cs" />
+    <Compile Include="ZigZagConversionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
