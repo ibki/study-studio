@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm.Test", "Algorithm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf.Viewbox.Test", "Wpf.Viewbox.Test\Wpf.Viewbox.Test.csproj", "{824CD108-7728-410A-9D2F-1BCB4D75FF4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructure.Test", "DataStructure.Test\DataStructure.Test.csproj", "{14889D97-E7D6-47F1-B41D-7B37E42DF268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure.Test", "DataStructure.Test\DataStructure.Test.csproj", "{14889D97-E7D6-47F1-B41D-7B37E42DF268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFramework.Test", "DotNetFramework.Test\DotNetFramework.Test.csproj", "{E291E6F7-BBD7-4797-BB35-3C6C9505BD53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{14889D97-E7D6-47F1-B41D-7B37E42DF268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14889D97-E7D6-47F1-B41D-7B37E42DF268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14889D97-E7D6-47F1-B41D-7B37E42DF268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E291E6F7-BBD7-4797-BB35-3C6C9505BD53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E291E6F7-BBD7-4797-BB35-3C6C9505BD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E291E6F7-BBD7-4797-BB35-3C6C9505BD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E291E6F7-BBD7-4797-BB35-3C6C9505BD53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
