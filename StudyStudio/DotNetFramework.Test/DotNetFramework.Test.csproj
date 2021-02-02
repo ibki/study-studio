@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="TryParseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConstructorTests.cs" />
+    <Compile Include="Initialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
