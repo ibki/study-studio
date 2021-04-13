@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetFramework.Test", "Dot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetCode.Test", "LeetCode.Test\LeetCode.Test.csproj", "{34DA1637-0A8A-469B-996B-3B0A7073AD42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.WebApi.Test", "DotNetCore.WebApi.Test\DotNetCore.WebApi.Test.csproj", "{1A9E3F5E-CD5E-4A49-959B-91B4E43571E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{34DA1637-0A8A-469B-996B-3B0A7073AD42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34DA1637-0A8A-469B-996B-3B0A7073AD42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34DA1637-0A8A-469B-996B-3B0A7073AD42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9E3F5E-CD5E-4A49-959B-91B4E43571E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9E3F5E-CD5E-4A49-959B-91B4E43571E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9E3F5E-CD5E-4A49-959B-91B4E43571E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9E3F5E-CD5E-4A49-959B-91B4E43571E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
