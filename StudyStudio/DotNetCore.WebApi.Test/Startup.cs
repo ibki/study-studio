@@ -45,6 +45,10 @@ namespace DotNetCore.WebApi.Test
             });
             #endregion
 
+            #region Caching
+            services.AddResponseCaching();
+            #endregion
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -68,6 +72,10 @@ namespace DotNetCore.WebApi.Test
             #region Localization
             var localizeOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(localizeOptions.Value);
+            #endregion
+
+            #region Caching
+            app.UseResponseCaching();
             #endregion
 
             #region Static file
