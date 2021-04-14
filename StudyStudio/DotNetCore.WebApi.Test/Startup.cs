@@ -70,6 +70,10 @@ namespace DotNetCore.WebApi.Test
             app.UseRequestLocalization(localizeOptions.Value);
             #endregion
 
+            #region Static file
+            app.UseStaticFiles();
+            #endregion
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
