@@ -30,7 +30,7 @@ namespace WinForms.Test
                 var path = openFileDialog.FileName;
 
                 byte[] fileBytes;
-                using (var stream = System.IO.File.OpenRead(path))
+                using (FileStream stream = File.OpenRead(path))
                 {
                     fileBytes = new byte[stream.Length];
                     stream.Read(fileBytes, 0, fileBytes.Length);
@@ -40,8 +40,11 @@ namespace WinForms.Test
 
                 var fileContent = new ByteArrayContent(fileBytes);
                 fileContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("multipart/form-data");
-                multiContent.Add(fileContent, nameof(File.FormFile), name);
-                multiContent.Add(new StringContent(name), nameof(File.Name));
+                multiContent.Add(fileContent, nameof(UploadFile.File), name);
+
+                multiContent.Add(new StringContent(FileNoNumericUpDown.Value.ToString()), $"{nameof(UploadFile.Info)}.{nameof(UploadFile.Info.No)}");
+
+                multiContent.Add(new StringContent(FileNameTextBox.Text), $"{nameof(UploadFile.Info)}.{nameof(UploadFile.Info.Name)}");
 
                 var httpClient = new HttpClient();
 
@@ -55,9 +58,15 @@ RESPONSE DATA = {await httpResponseMessage.Content.ReadAsStringAsync()}
         }
     }
 
-    public class File
+    public class UploadFile
     {
+        public FileInfo Info { get; set; }
+        public IFormFile File { get; set; }
+    }
+
+    public class FileInfo
+    {
+        public int No { get; set; }
         public string Name { get; set; }
-        public IFormFile FormFile { get; set; }
     }
 }

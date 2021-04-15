@@ -14,7 +14,7 @@ namespace DotNetCore.WebApi.Test.Controllers
     public class FileController : ControllerBase
     {
         [HttpPost()]
-        public IActionResult UploadFiles([FromServices] IWebHostEnvironment environment, [FromForm] File request)
+        public IActionResult UploadFiles([FromServices] IWebHostEnvironment environment, [FromForm] UploadFile request)
         {
             if (string.IsNullOrWhiteSpace(environment.WebRootPath))
                 environment.WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
@@ -24,7 +24,7 @@ namespace DotNetCore.WebApi.Test.Controllers
             if (!Directory.Exists(uploadPath))
                 Directory.CreateDirectory(uploadPath);
 
-            string uploadFileName = $"{request.Name}{Path.GetExtension(request.FormFile.FileName)}";
+            string uploadFileName = $"{request.Info.Name}{Path.GetExtension(request.File.FileName)}";
             string uploadFilePath = Path.Combine(uploadPath, uploadFileName);
 
             if (System.IO.File.Exists(uploadFilePath))
@@ -33,16 +33,22 @@ namespace DotNetCore.WebApi.Test.Controllers
             }
 
             using FileStream fileStream = System.IO.File.Create(uploadFilePath);
-            request.FormFile.CopyTo(fileStream);
+            request.File.CopyTo(fileStream);
             fileStream.Flush();
 
             return Ok();
         }
     }
 
-    public class File
+    public class UploadFile
     {
+        public FileInfo Info { get; set; }
+        public IFormFile File { get; set; }
+    }
+
+    public class FileInfo
+    {
+        public int No { get; set; }
         public string Name { get; set; }
-        public IFormFile FormFile { get; set; }
     }
 }
